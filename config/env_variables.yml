@@ -1,0 +1,5 @@
+## Store all your environment variables here. Don't forget to add this to gitignore.
+## Else, you'll be screwed.
+
+FACEBOOK_APP_ID: '839625486114675'
+FACEBOOK_SECRET: 'a9dc7c5feb6ffd49bce92b1e81da3dbe'

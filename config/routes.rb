@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  resources :users
+  root :to => 'users#show'
+
+  match 'auth/:provider/callback', to: 'sessions#create'
+  match 'auth/failure', to: redirect('/')
+  match 'signout', to: 'sessions#destroy', as: 'signout'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -54,5 +61,4 @@ Rails.application.routes.draw do
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id))(.:format)'
-  root :to => 'application#hello'
 end
