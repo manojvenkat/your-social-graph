@@ -28,8 +28,12 @@ GEM
     activesupport (3.2.21)
       i18n (~> 0.6, >= 0.6.4)
       multi_json (~> 1.0)
+    addressable (2.3.8)
     arel (3.0.3)
     attr_required (1.0.0)
+    bloomfilter-rb (2.1.1)
+      redis
+    buftok (0.2.0)
     builder (3.0.4)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
@@ -39,23 +43,39 @@ GEM
       execjs
     coffee-script-source (1.9.1.1)
     columnize (0.8.9)
+    daemons (1.1.9)
     debugger (1.6.8)
       columnize (>= 0.3.1)
       debugger-linecache (~> 1.2.0)
       debugger-ruby_core_source (~> 1.3.5)
     debugger-linecache (1.2.0)
     debugger-ruby_core_source (1.3.5)
+    delayed_job (4.0.6)
+      activesupport (>= 3.0, < 5.0)
+    delayed_job_active_record (4.0.3)
+      activerecord (>= 3.0, < 5.0)
+      delayed_job (>= 3.0, < 4.1)
+    equalizer (0.0.11)
     erubis (2.7.0)
     execjs (2.5.2)
     faraday (0.9.1)
       multipart-post (>= 1.2, < 3)
+    fast-stemmer (1.0.2)
     fb_graph (2.7.17)
       httpclient (>= 2.4)
       multi_json (>= 1.3)
       rack-oauth2 (>= 0.14.4)
       tzinfo
+    geokit (1.9.0)
+      multi_json (>= 1.3.2)
     hashie (3.4.1)
+    highscore (1.2.0)
+      bloomfilter-rb (>= 2.1.1)
+      whatlanguage (>= 1.0.0)
     hike (1.2.3)
+    http (0.6.4)
+      http_parser.rb (~> 0.6.0)
+    http_parser.rb (0.6.0)
     httpclient (2.6.0.1)
     i18n (0.7.0)
     journey (1.0.4)
@@ -64,14 +84,22 @@ GEM
       thor (>= 0.14, < 2.0)
     json (1.8.2)
     jwt (1.4.1)
+    koala (2.0.0)
+      addressable
+      faraday
+      multi_json
     libv8 (3.16.14.3)
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    memoizable (0.4.2)
+      thread_safe (~> 0.3, >= 0.3.1)
     mime-types (1.25.1)
     multi_json (1.11.0)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
+    naught (1.0.0)
+    oauth (0.4.7)
     oauth2 (1.0.0)
       faraday (>= 0.8, < 0.10)
       jwt (~> 1.0)
@@ -83,9 +111,15 @@ GEM
       rack (~> 1.0)
     omniauth-facebook (2.0.1)
       omniauth-oauth2 (~> 1.2)
+    omniauth-oauth (1.1.0)
+      oauth
+      omniauth (~> 1.0)
     omniauth-oauth2 (1.3.0)
       oauth2 (~> 1.0)
       omniauth (~> 1.2)
+    omniauth-twitter (1.2.0)
+      json (~> 1.3)
+      omniauth-oauth (~> 1.1)
     pg (0.17.1)
     polyglot (0.3.5)
     rack (1.4.5)
@@ -124,12 +158,14 @@ GEM
     rake (10.4.2)
     rdoc (3.12.2)
       json (~> 1.4)
+    redis (3.2.1)
     ref (1.0.5)
     sass (3.4.13)
     sass-rails (3.2.6)
       railties (~> 3.2.0)
       sass (>= 3.1.10)
       tilt (~> 1.3)
+    simple_oauth (0.3.1)
     sprockets (2.2.3)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -140,29 +176,50 @@ GEM
       libv8 (~> 3.16.14.0)
       ref
     thor (0.19.1)
+    thread_safe (0.3.5)
     tilt (1.4.1)
     treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
+    twitter (5.14.0)
+      addressable (~> 2.3)
+      buftok (~> 0.2.0)
+      equalizer (~> 0.0.9)
+      faraday (~> 0.9.0)
+      http (~> 0.6.0)
+      http_parser.rb (~> 0.6.0)
+      json (~> 1.8)
+      memoizable (~> 0.4.0)
+      naught (~> 1.0)
+      simple_oauth (~> 0.3.0)
     tzinfo (0.3.44)
     uglifier (2.7.1)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
+    whatlanguage (1.0.5)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   coffee-rails (~> 3.2.1)
+  daemons
   debugger
+  delayed_job_active_record
   execjs
+  fast-stemmer
   fb_graph
+  geokit
+  highscore
   jquery-rails
+  koala
   omniauth-facebook
+  omniauth-twitter
   pg (= 0.17.1)
   rails (= 3.2.21)
   rails_12factor (= 0.0.2)
   sass-rails (~> 3.2.3)
   sqlite3
   therubyracer
+  twitter
   uglifier (>= 1.0.3)

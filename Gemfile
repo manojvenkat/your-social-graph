@@ -47,3 +47,14 @@ end
 
 gem 'fb_graph'
 gem 'omniauth-facebook'
+gem 'omniauth-twitter'
+gem 'koala'
+
+gem 'twitter'
+gem 'delayed_job_active_record'
+gem 'daemons'
+
+gem 'highscore'
+gem 'fast-stemmer'
+
+gem 'geokit'

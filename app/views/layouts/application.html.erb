@@ -1,25 +1,29 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <title>Twitter Integration</title>
+    <%= stylesheet_link_tag    "application", media: "all" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tag %>
+  </head>
+  <body>
+    <div id="container">
+      <div id="user_nav">
+        <% if current_user %>
+          <span style="padding-left: 8px"> 
+          Signed in as <%= current_user.name %>
+          </span> | 
+          <%= link_to "Sign out", signout_path %>
+        <% else %>
+          <%= link_to "Sign in with Twitter", "/auth/twitter" %>
+        <% end %>
+      </div>
 
-	<head>
-	  <title>HachiApp</title>
-	  <%= stylesheet_link_tag    "application", :media => "all" %>
-	  <%= javascript_include_tag "application" %>
-	  <%= csrf_meta_tags %>
-	</head>
-
-	<body>
-	  <div id="container">
-	    <div id="user_nav">
-	      <% if current_user %>
-	        Signed in as <strong><%= current_user.name %></strong>!
-	        <%= link_to "Sign out", signout_path, id: "sign_out" %>
-	      <% else %>
-	        <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
-	      <% end %>
-	    </div>
-			<%= yield %>
-		</div>
-	</body>
-
+      <% flash.each do |name, msg| %>
+        <%= content_tag :div, msg, id: "flash_#{name}" %>
+      <% end %>
+      <%= yield %>
+      <div class="clear"></div>
+    </div>
+  </body>
 </html>
