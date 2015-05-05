@@ -58,3 +58,6 @@ gem 'highscore'
 gem 'fast-stemmer'
 
 gem 'geokit'
+gem 'whenever', :require => false
+gem 'gmaps4rails'
+gem 'underscore-rails'

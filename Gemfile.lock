@@ -35,6 +35,7 @@ GEM
       redis
     buftok (0.2.0)
     builder (3.0.4)
+    chronic (0.10.2)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
       railties (~> 3.2.0)
@@ -68,6 +69,7 @@ GEM
       tzinfo
     geokit (1.9.0)
       multi_json (>= 1.3.2)
+    gmaps4rails (2.1.2)
     hashie (3.4.1)
     highscore (1.2.0)
       bloomfilter-rb (>= 2.1.1)
@@ -196,7 +198,10 @@ GEM
     uglifier (2.7.1)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
+    underscore-rails (1.8.2)
     whatlanguage (1.0.5)
+    whenever (0.9.4)
+      chronic (>= 0.6.3)
 
 PLATFORMS
   ruby
@@ -210,6 +215,7 @@ DEPENDENCIES
   fast-stemmer
   fb_graph
   geokit
+  gmaps4rails
   highscore
   jquery-rails
   koala
@@ -223,3 +229,5 @@ DEPENDENCIES
   therubyracer
   twitter
   uglifier (>= 1.0.3)
+  underscore-rails
+  whenever

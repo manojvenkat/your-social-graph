@@ -17,7 +17,7 @@ class UsersController < ApplicationController
   def show
     if current_user
       @user = User.find(current_user.id)
-
+      generate_markers
       respond_to do |format|
         format.html # show.html.erb
         format.json { render json: @user }
@@ -84,4 +84,17 @@ class UsersController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  private
+
+  def generate_markers
+    if current_user
+      @conns = current_user.connections
+      @hash = Gmaps4rails.build_markers(@conns) do |conn, marker|
+        marker.lat conn.latitude.to_f
+        marker.lng conn.longitude.to_f
+      end
+    end
+  end
 end
+

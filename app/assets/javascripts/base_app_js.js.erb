@@ -1,0 +1,23 @@
+var GmapsHandler = {
+  buildGMaps: function(markersToAdd)
+  {
+    handler = Gmaps.build('Google');
+    handler.buildMap({
+        provider: {
+          disableDefaultUI: true
+          // pass in other Google Maps API options here
+        },
+        internal: {
+          id: 'map'
+        }
+      },
+      function(){
+        jsonObj = jQuery.parseJSON(markersToAdd);
+        console.log(jsonObj);
+        markers = handler.addMarkers(jsonObj);
+        handler.bounds.extendWith(markers);
+        handler.fitMapToBounds();
+      }
+    );
+  }
+}

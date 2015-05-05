@@ -13,9 +13,18 @@
 			<%= @user.twitter_handle %>
 		</p>
 	</div>
+	<div>
+		<%= render :partial => 'users/map' %>
+	</div>
 	<% else %>
 	<p>
 		<b> Please login to HachiApp using Twitter Account. :) </b>
 	</p>
 	<% end %>
 </div>
+
+<%= javascript_tag do %>
+	jQuery(document).ready(function(){
+		GmapsHandler.buildGMaps('<%= j @hash.to_json.to_s.html_safe %>');
+	});
+<% end %>

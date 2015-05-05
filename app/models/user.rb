@@ -124,6 +124,9 @@ class User < ActiveRecord::Base
         conn.name = follower_or_friend.name
         conn.screen_name = follower_or_friend.name
         conn.location = follower_or_friend.location
+        lat_long = Connection.get_lat_long_for_connection(conn.location)
+        conn.latitude = lat_long[0]
+        conn.longitude = lat_long[1]
         conn.conn_type = Connection::ConnectionType::FOLLOWER
         conn.save!
       rescue ActiveRecord::RecordInvalid

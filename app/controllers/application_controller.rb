@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+	include ActionView::Helpers::OutputSafetyHelper
   protect_from_forgery
 
   def hello
