@@ -12,7 +12,7 @@ class Tweet < ActiveRecord::Base
   		keywords = result.keywords.top(result.keywords.count)
   		keywords_string = ''
   		keywords.each do |word|
-  			keywords_string +=	word.to_s.stem + ','
+  			keywords_string +=	word.to_s.stem.downcase + ','
   		end
   		if tweet.connection.present?
   			present_keywords = tweet.connection.keywords.to_s

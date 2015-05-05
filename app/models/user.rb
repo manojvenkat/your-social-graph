@@ -159,4 +159,37 @@ class User < ActiveRecord::Base
     self.save_recent_tweets_conns
   end
 
+  def self.calculate_matches_between_conns
+    User.all.each do |user|
+      conns = user.connections
+        for match_counter in 0..(conns.count-1)        
+          for target_counter in 0..(counter-1)
+            match_value = User.calculate_match(conns[target_counter].keywords, conns[match_counter].keywords)
+            Matching.create!(conn_1_id: target_counter, conn_2_id: match_counter, match_percent: match_value)
+          end
+        end
+      end
+    end
+  end
+
+  def self.calculate_match(conn_1_keywords, conn_2_keywords)
+    keywords_1 = conn_1_keywords.downcase.split(',').uniq
+    keywords_2 = conn_2_keywords.downcase.split(',').uniq
+    union_keywords_size = (keywords_1 | keywords_2).size.to_f 
+    if union_keywords_size > 0 
+      return (keywords_1 & keywords_2).size.to_f/union_keywords_size
+    else
+      return 0
+    end
+  end
+
+  def self.calculate_match_with_conns
+    User.all.each do |user|
+      conns = user.connections
+      conns.each do |conn|
+        match_value = User.calculate_match(user.keywords, conn.keywords)
+        Matching.create!(conn_1_id: conn.id, user_id: user.id, match_percent: match_value)
+      end
+    end
+  end
 end
