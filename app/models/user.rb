@@ -162,11 +162,10 @@ class User < ActiveRecord::Base
   def self.calculate_matches_between_conns
     User.all.each do |user|
       conns = user.connections
-        for match_counter in 0..(conns.count-1)        
-          for target_counter in 0..(counter-1)
-            match_value = User.calculate_match(conns[target_counter].keywords, conns[match_counter].keywords)
-            Matching.create!(conn_1_id: target_counter, conn_2_id: match_counter, match_percent: match_value)
-          end
+      for match_counter in 0..(conns.count-1)        
+        for target_counter in 0..(match_counter-1)
+          match_value = User.calculate_match(conns[target_counter].keywords, conns[match_counter].keywords) if conns[target_counter].keywords.present? && conns[match_counter].keywords.present?
+          Matching.create!(conn_1_id: target_counter, conn_2_id: match_counter, match_percent: match_value) if !match_value.nil?
         end
       end
     end
@@ -187,9 +186,10 @@ class User < ActiveRecord::Base
     User.all.each do |user|
       conns = user.connections
       conns.each do |conn|
-        match_value = User.calculate_match(user.keywords, conn.keywords)
-        Matching.create!(conn_1_id: conn.id, user_id: user.id, match_percent: match_value)
+        match_value = User.calculate_match(user.keywords, conn.keywords) if user.keywords.present? && conn.keywords.present?
+        Matching.create!(conn_1_id: conn.id, user_id: user.id, match_percent: match_value) if !match_value.nil?
       end
     end
   end
+
 end

@@ -29,6 +29,7 @@ GEM
       i18n (~> 0.6, >= 0.6.4)
       multi_json (~> 1.0)
     addressable (2.3.8)
+    algorithms (0.5.0)
     arel (3.0.3)
     attr_required (1.0.0)
     bloomfilter-rb (2.1.1)
@@ -162,6 +163,9 @@ GEM
       json (~> 1.4)
     redis (3.2.1)
     ref (1.0.5)
+    rgl (0.5.0)
+      algorithms (~> 0.5.0)
+      stream (~> 0.5.0)
     sass (3.4.13)
     sass-rails (3.2.6)
       railties (~> 3.2.0)
@@ -174,6 +178,7 @@ GEM
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
     sqlite3 (1.3.10)
+    stream (0.5)
     therubyracer (0.12.1)
       libv8 (~> 3.16.14.0)
       ref
@@ -224,6 +229,7 @@ DEPENDENCIES
   pg (= 0.17.1)
   rails (= 3.2.21)
   rails_12factor (= 0.0.2)
+  rgl
   sass-rails (~> 3.2.3)
   sqlite3
   therubyracer

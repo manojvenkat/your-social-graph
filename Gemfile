@@ -61,3 +61,5 @@ gem 'geokit'
 gem 'whenever', :require => false
 gem 'gmaps4rails'
 gem 'underscore-rails'
+
+gem 'rgl'
