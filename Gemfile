@@ -37,7 +37,7 @@ gem 'jquery-rails'
 # gem 'capistrano'
 
 # To use debugger
-gem 'debugger'
+# gem 'debugger'
 
 gem 'execjs'
 gem 'therubyracer', :platforms => :ruby
@@ -64,4 +64,4 @@ gem 'whenever', :require => false
 gem 'gmaps4rails'
 gem 'underscore-rails'
 
-gem 'rgl'
+# gem 'rgl'
